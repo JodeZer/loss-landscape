@@ -82,7 +82,7 @@ def load_dataset(dataset='cifar10', datapath='cifar10/data', batch_size=128, \
     elif dataset == "binaryAdd":
         rawData = rnn.models.addRnn.loadFileRawData(datapath)
         train_loader = [rawData[0][:4000], rawData[1][:4000],rawData[2][:4000] ]
-        train_loader = [rawData[0][4000:], rawData[1][4000:],rawData[2][4000:] ]
+        test_loader = [rawData[0][4000:], rawData[1][4000:],rawData[2][4000:] ]
     return train_loader, test_loader
 
 
