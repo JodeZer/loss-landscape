@@ -8,6 +8,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import time
 from torch.autograd.variable import Variable
+import rnn.models.addRnn
+import torch.autograd as autograd
 
 def eval_loss(net, criterion, loader, use_cuda=False):
     """
@@ -62,5 +64,29 @@ def eval_loss(net, criterion, loader, use_cuda=False):
                 total_loss += loss.item()*batch_size
                 _, predicted = torch.max(outputs.data, 1)
                 correct += predicted.cpu().eq(targets).sum().item()
+        elif isinstance(criterion, nn.BCELoss):
+            # must be rnn add now 
+            a_list, b_list, c_list = loader[0],loader[1], loader[2] 
+            for batch_idx, rawData in enumerate(zip(a_list, b_list, c_list)):
+                x, y = rnn.models.addRnn.loadOneSample(rawData[0],rawData[1],rawData[2], bugSample=False)
+                
+
+                x_var=autograd.Variable(torch.from_numpy(x).unsqueeze(1).float()) #convert to torch tensor and variable
+                
+                x_var= x_var.contiguous()
+                
+                y_var=autograd.Variable(torch.from_numpy(y))
+                
+                finalScores = net(x_var)
+                
+                loss=criterion(finalScores,y_var)
+                total_loss += loss
+
+                finalScores=finalScores.gt(0.5).view(8)
+
+                y_var = y_var.view(8).byte()
+                if torch.equal(finalScores, y_var):
+                    correct += 1
+                total += 1
 
     return total_loss/total, 100.*correct/total

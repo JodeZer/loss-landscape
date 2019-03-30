@@ -70,7 +70,21 @@ def setup_surface_file(args, surf_file, dir_file):
     return surf_file
 
 
-def crunch(surf_file, net, w, s, d, dataloader, loss_key, acc_key, comm, rank, args):
+####
+# surf_file filepath
+# net: pytorch model
+# w 网络的参数们
+#s net的state dict
+#d （两个）随机方向
+#dataloader list即可
+# loss_key string 不知道用途
+# acc_key
+# comm 都是mpi的内容
+# rank 
+# args
+# crunch(surf_file, net, w, s, d, trainloader, 'train_loss', 'train_acc', comm, rank, args)
+####
+def crunch(surf_file, net, w, s, d, dataloader: list, loss_key, acc_key, comm, rank, args):
     """
         Calculate the loss values and accuracies of modified models in parallel
         using MPI reduce.
@@ -104,6 +118,8 @@ def crunch(surf_file, net, w, s, d, dataloader, loss_key, acc_key, comm, rank, a
     criterion = nn.CrossEntropyLoss()
     if args.loss_name == 'mse':
         criterion = nn.MSELoss()
+    elif args.loss_name == 'bce':
+        criterion = nn.BCELoss()
 
     # Loop over all uncalculated loss values
     for count, ind in enumerate(inds):

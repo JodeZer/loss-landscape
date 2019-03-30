@@ -4,6 +4,7 @@
 
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import pyplot as plt
+plt.switch_backend('agg')
 from matplotlib import cm
 import h5py
 import argparse

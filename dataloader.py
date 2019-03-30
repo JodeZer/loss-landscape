@@ -4,6 +4,7 @@ from torchvision import transforms
 import os
 import numpy as np
 import argparse
+import rnn.models.addRnn
 
 def get_relative_path(file):
     script_dir = os.path.dirname(__file__)  # <-- absolute dir the script is in
@@ -78,6 +79,10 @@ def load_dataset(dataset='cifar10', datapath='cifar10/data', batch_size=128, \
         test_loader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
                                                   shuffle=False, num_workers=threads)
 
+    elif dataset == "binaryAdd":
+        rawData = rnn.models.addRnn.loadFileRawData(datapath)
+        train_loader = [rawData[0][:4000], rawData[1][:4000],rawData[2][:4000] ]
+        train_loader = [rawData[0][4000:], rawData[1][4000:],rawData[2][4000:] ]
     return train_loader, test_loader
 
 

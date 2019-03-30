@@ -1,0 +1,36 @@
+gcloud compute scp --project "intricate-muse-227404" \
+      --zone "asia-east1-b" --recurse /Users/zhujiafeng/Downloads/resnet56.tar.gz zhujiafeng@instance-1:~/github/loss-landscape/tmp
+
+
+gcloud compute --project "intricate-muse-227404" ssh --zone "asia-east1-b" "instance-1"
+
+
+
+
+~/github/loss-landscape/cifar10/trained_nets/resnet56_sgd_lr=0.1_bs=128_wd=0.0005/model_300.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,51]x[-1.0,1.0,51].h5_train_loss_2dcontourf.pdf
+
+gcloud compute --project "intricate-muse-227404" ssh --zone "asia-east1-b" "instance-1"
+
+
+gcloud compute scp --project "intricate-muse-227404" \
+      --zone "asia-east1-b" --recurse zhujiafeng@instance-1:~/github/loss-landscape/cifar10/trained_nets/resnet56_sgd_lr=0.1_bs=128_wd=0.0005 ~/HKUProject/course/COMP7404/example
+
+
+openmpi.tar.gz
+
+gcloud compute scp --project "intricate-muse-227404" \
+      --zone "asia-east1-b" --recurse zhujiafeng@instance-1:~/openmpi.tar.gz ~/
+
+
+VBoxManage modifyhd — resize 30000 /Users/zhujiafeng/VirtualBox VMs/ubuntu18/ubuntu18.vdi
+
+
+gcloud compute scp --project "intricate-muse-227404" \
+      --zone "asia-east1-b" --recurse * zhujiafeng@instance-1:~/github/loss-landscape/cifar10/trained_nets_tars/
+
+
+cifar10/trained_nets/resnet56_noshort_sgd_lr=0.1_bs=128_wd=0.0005/model_300.t7_weights_xignore=biasbn_xnorm=filter_yignore=biasbn_ynorm=filter.h5_[-1.0,1.0,201]x[-1.0,1.0,201].h5_train_loss_2dcontourf.pdf
+
+
+gcloud compute scp --project "intricate-muse-227404" \
+      --zone "asia-east1-b" --recurse zhujiafeng@instance-1:~/github/loss-landscape/pdf_res .
