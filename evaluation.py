@@ -79,7 +79,7 @@ def eval_loss(net, criterion, loader, use_cuda=False):
                 
                 finalScores = net(x_var)
                 
-                loss=criterion(finalScores,y_var)
+                loss=criterion(finalScores,y_var.view(8,1,1))
                 total_loss += loss
 
                 finalScores=finalScores.gt(0.5).view(8)
