@@ -148,6 +148,8 @@ mpirun -n 4 python plot_surface.py --x=-1:1:51 --y=-1:1:51 --model binaryAddRnn8
 --mpi --cuda --dir_type weights --xignore biasbn --xnorm filter --yignore biasbn --ynorm filter --plot
 ```
 
+![RNN Sample](https://github.com/JodeZer/loss-landscape/blob/master/rnn/cloud_res/trained_nets/addrnn_good_8_1/8_1_3d.png)
+
 So does the result can be found in `rnn/cloud_res`
 
 If you have any question, please drop me a email to `jfzhu93@hku.hk`
