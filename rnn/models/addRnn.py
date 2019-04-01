@@ -174,9 +174,9 @@ def modelFilePathAndName(modelname, layer_num, hidden_num, accuracy, timestamp):
 def runMain(hidden_num, layer_num , epoch_num):
     import datetime
     timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-    
-    net, testAcc = trainOneModel(hidden_num, layer_num , epoch_num)
-    pathPrefix, fileName = modelFilePathAndName("addrnn_good", 8, 1, testAcc, timestamp)
+
+    net, testAcc = trainOneModel(hidden_num = hidden_num, layer_num = layer_num, epoch_num=epoch_num)
+    pathPrefix, fileName = modelFilePathAndName("addrnn_good", hidden_num, layer_num, testAcc, timestamp)
     path = "../trained_nets/{}".format(pathPrefix)
     print("model will save to {}".format(path))
     import os
@@ -186,7 +186,7 @@ def runMain(hidden_num, layer_num , epoch_num):
 
 
 if __name__ == "__main__":
-    runMain(hidden_num = 8, layer_num = 1, epoch_num=4)
+    runMain(hidden_num = 8, layer_num = 1, epoch_num=10)
     runMain(hidden_num = 8, layer_num = 2, epoch_num=10)
     runMain(hidden_num = 16, layer_num = 2, epoch_num=10)
     runMain(hidden_num = 16, layer_num = 3, epoch_num=10)
