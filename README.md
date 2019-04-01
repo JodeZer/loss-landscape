@@ -133,3 +133,21 @@ If you find this code useful in your research, please cite:
   year={2018}
 }
 ```
+
+## By Me
+
+We implement a `RNN` plugin for this repo and store every thing in the `rnn` folder, it is mainly a toy homework from my another course `7606 Deep Learning`
+
+like running:
+```shell
+mpirun -n 4 python plot_surface.py --x=-1:1:51 --y=-1:1:51 --model binaryAddRnn8_1 \
+--dataset binaryAdd \
+--model_file rnn/trained_nets/addrnn_good_8_1/20190330_085438_1.0_model.t7 \
+--loss_name bce
+--datapath rnn/models/data.txt \
+--mpi --cuda --dir_type weights --xignore biasbn --xnorm filter --yignore biasbn --ynorm filter --plot
+```
+
+So does the result can be found in `rnn/cloud_res`
+
+If you have any question, please drop me a email to `jfzhu93@hku.hk`
