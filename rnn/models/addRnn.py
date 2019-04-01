@@ -53,6 +53,12 @@ def BinaryAddRNN8_1():
 def BinaryAddRNN8_2():
     return BinaryAddRNN(8, 2)
 
+def BinaryAddRNN16_2():
+    return BinaryAddRNN(16,2)
+
+def BinaryAddRNN16_3():
+    return BinaryAddRNN(16,3)
+
     
 
 def loadFileRawData(datapath = "data.txt", PERMUTAION = False):

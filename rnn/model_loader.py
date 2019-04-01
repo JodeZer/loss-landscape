@@ -7,6 +7,8 @@ import rnn.models.addRnn as rnn
 models = {
     'binaryAddRnn8_1'                  : rnn.BinaryAddRNN8_1,
     'binaryAddRnn8_2'                  : rnn.BinaryAddRNN8_2,
+    'binaryAddRnn16_2'                 : rnn.BinaryAddRNN16_2,
+    'binaryAddRnn16_3'                 : rnn.BinaryAddRNN16_3,
 }
 
 def load(model_name, model_file=None, data_parallel=False):
